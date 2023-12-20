@@ -1,9 +1,9 @@
+// api.js
 document.addEventListener('DOMContentLoaded', function () {
-    fetchItems();
-});
-
+    fetchItems()
+})
 function fetchItems() {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyNDMxMzE3LCJpYXQiOjE3MDI0MzEwMTcsImp0aSI6ImFhYjZhNjc0MWRkZjQwMjA4YzkyNGY4ZjI4NGRhYzc4IiwidXNlcl9pZCI6MX0.P2xDQL81S0svAasKnU1JIG5WxRYmOMn_09zltdOOaB0';
+    const token = localStorage.getItem('accessToken');
 
     fetch('http://localhost:8000/apia/item/', {
         headers: {
@@ -36,3 +36,4 @@ function displayItems(items) {
         itemsContainer.appendChild(itemElement);
     });
 }
+

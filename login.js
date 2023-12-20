@@ -5,7 +5,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     const password = document.getElementById('password').value;
     const messageDiv = document.getElementById('message');
 
-
     fetch('http://localhost:8000/api/token/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -19,14 +18,16 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
         })
         .then(data => {
             if (data.access) {
-                localStorage.setItem('accessToken', data.access)
+                localStorage.setItem('accessToken', data.access);
+                window.location.href = './index.html';
                 messageDiv.textContent = 'Login Successfully';
-                messageDiv.style.color = 'green'
+                messageDiv.style.color = 'green';
+
             }
         })
         .catch(error => {
             console.error('Error', error);
             messageDiv.textContent = 'Login failed';
-            messageDiv.style.color = 'red'
-        })
-})
+            messageDiv.style.color = 'red';
+        });
+});
